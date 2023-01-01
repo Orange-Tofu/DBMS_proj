@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+HOME
+{% endblock title %}
+
+{% block body %}
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<div class="flex-box" id="container">
+  <div class="row" id="content">
+  <div class="col-md-6" id="text">
+    <h1>Welcome To The<br> <span>HMS</span></h1>
+    <p>
+      Hospital Management System is a computer system that helps manage the information related to health care.
+      <br><br>They manage the data related to all departments of healthcare
+      <br><br>HMS was introduced with the cause for helping hospitals speed up their processes.
+    </p>
+  </div>
+
+  <div class = "col-md-6">
+    <img src="static/illustration.png" class="d-block w-100" alt="..." id="doctor">
+  </div>
+</div>
+</div>
+
+{% endblock body %}
