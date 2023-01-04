@@ -9,37 +9,20 @@ from flask_mail import Mail
 # MY db connection
 local_server= True
 app = Flask(__name__)
-app.secret_key='aneeqah'
+app.secret_key='Bruce'
 
 
 # this is for getting unique user access
 login_manager=LoginManager(app)
 login_manager.login_view='login'
 
-# SMTP MAIL SERVER SETTINGS
-
-app.config.update(
-    MAIL_SERVER='smtp.gmail.com',
-    MAIL_PORT='465',
-    MAIL_USE_SSL=True,
-    MAIL_USERNAME="add your gmail-id",
-    MAIL_PASSWORD="add your gmail-password"
-)
-mail = Mail(app)
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
-
-
 # app.config['SQLALCHEMY_DATABASE_URL']='mysql://username:password@localhost/databas_table_name'
-app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:@localhost/dbms_proj'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql://root:@localhost/hm'
 db=SQLAlchemy(app)
-
-
 
 # These are the db models/relations, that is the tables
 class Test(db.Model):
